@@ -20,3 +20,5 @@ $(document).on("turbolinks:load", () => {
 })
 require('css/application.scss')
 import '@fortawesome/fontawesome-pro/js/all'
+require("css/application.scss")
+import "@fortawesome/fontawesome-free/js/all"
