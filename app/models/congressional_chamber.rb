@@ -1,0 +1,2 @@
+class CongressionalChamber < ApplicationRecord
+end

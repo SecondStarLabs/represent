@@ -1,0 +1,2 @@
+class CongressionalMember < ApplicationRecord
+end

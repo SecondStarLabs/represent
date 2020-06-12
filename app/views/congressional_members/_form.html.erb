@@ -1,0 +1,249 @@
+<%= form_with(model: congressional_member, local: true) do |form| %>
+  <% if congressional_member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(congressional_member.errors.count, "error") %> prohibited this congressional_member from being saved:</h2>
+
+      <ul>
+      <% congressional_member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :short_title %>
+    <%= form.text_field :short_title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :bio_directory_id %>
+    <%= form.text_field :bio_directory_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :suffix %>
+    <%= form.text_field :suffix, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_of_birth %>
+    <%= form.text_field :date_of_birth, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :party %>
+    <%= form.text_field :party, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :leadership_role %>
+    <%= form.text_field :leadership_role, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :twitter_account %>
+    <%= form.text_field :twitter_account, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :facebook_account %>
+    <%= form.text_field :facebook_account, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :youtube_account %>
+    <%= form.text_field :youtube_account, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :govtrack_id %>
+    <%= form.text_field :govtrack_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cspan_id %>
+    <%= form.text_field :cspan_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :votesmart_id %>
+    <%= form.text_field :votesmart_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :icpsr_id %>
+    <%= form.text_field :icpsr_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :crp_id %>
+    <%= form.text_field :crp_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :google_entity_id %>
+    <%= form.text_field :google_entity_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :fec_candidate_id %>
+    <%= form.text_field :fec_candidate_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :url %>
+    <%= form.text_field :url, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :rss_url %>
+    <%= form.text_field :rss_url, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :contact_form %>
+    <%= form.text_field :contact_form, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :in_office %>
+    <%= form.text_field :in_office, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cook_pvi %>
+    <%= form.text_field :cook_pvi, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :dw_nominate %>
+    <%= form.text_field :dw_nominate, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :ideal_point %>
+    <%= form.text_field :ideal_point, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :seniority %>
+    <%= form.text_field :seniority, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :next_election %>
+    <%= form.text_field :next_election, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_votes %>
+    <%= form.text_field :total_votes, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :missed_votes %>
+    <%= form.text_field :missed_votes, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :total_present %>
+    <%= form.text_field :total_present, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :ocd_id %>
+    <%= form.text_field :ocd_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :office %>
+    <%= form.text_field :office, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :fax %>
+    <%= form.text_field :fax, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :state %>
+    <%= form.text_field :state, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :senate_class %>
+    <%= form.text_field :senate_class, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :state_rank %>
+    <%= form.text_field :state_rank, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lis_id %>
+    <%= form.text_field :lis_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :missed_votes_pct %>
+    <%= form.text_field :missed_votes_pct, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :votes_with_party_pct %>
+    <%= form.text_field :votes_with_party_pct, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :votes_against_party_pct %>
+    <%= form.text_field :votes_against_party_pct, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if congressional_member.persisted? %>
+      <div class="float-right">
+        <%= link_to 'Destroy', congressional_member, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+
+    <%= form.submit class: 'btn btn-primary' %>
+
+    <% if congressional_member.persisted? %>
+      <%= link_to "Cancel", congressional_member, class: "btn btn-link" %>
+    <% else %>
+      <%= link_to "Cancel", congressional_members_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+<% end %>

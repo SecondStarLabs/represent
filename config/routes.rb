@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :congressional_members
+  resources :congressional_chambers
   namespace :admin do
     resources :users
     resources :announcements
