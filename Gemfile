@@ -76,4 +76,4 @@ end
 
 ## gems specifically for this app
 gem 'representable', '~> 3.0', '>= 3.0.4'
-gem 'ProPublica', git: 'https://github.com/captproton/propublica-gem'
+gem "ProPublica", :github => "captproton/Propublica-gem"

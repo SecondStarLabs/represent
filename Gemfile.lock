@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/captproton/propublica-gem
+  remote: https://github.com/captproton/Propublica-gem.git
   revision: 4e6d828e4d187ba21bd5f69bfa7408246819167e
   specs:
     ProPublica (0.0.5)
