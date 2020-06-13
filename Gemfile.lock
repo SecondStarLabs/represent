@@ -1,10 +1,4 @@
 GIT
-  remote: https://github.com/captproton/Propublica-gem.git
-  revision: 4e6d828e4d187ba21bd5f69bfa7408246819167e
-  specs:
-    ProPublica (0.0.5)
-
-GIT
   remote: https://github.com/excid3/administrate.git
   revision: 66fccf11506dd5fce07698cc4c4d4faf46962ad5
   branch: jumpstart
@@ -348,7 +342,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ProPublica!
   administrate!
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.3, >= 4.3.1)
