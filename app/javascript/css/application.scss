@@ -1,2 +1,7 @@
-@import '@fortawesome/fontawesome-pro';
-@import '@fortawesome/fontawesome-free';
+@import "@fortawesome/fontawesome-pro";
+@import "@fortawesome/fontawesome-free";
+
+@use "_congressional_members";
+.headshot {
+    back
+}
