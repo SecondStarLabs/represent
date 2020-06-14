@@ -1,4 +1,4 @@
-class MemberMaker
+class MemberManager
     attr_reader :member, :member_info
 
     def initialize(member: Member.new, member_info: )
@@ -12,6 +12,8 @@ class MemberMaker
         else
             MemberSummaryRepresenter.new(member).from_json(member_info.to_json)            
         end
+        member.bio_directory_id = member.id
+        member.delete_field("id")
         member
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_215903) do
+ActiveRecord::Schema.define(version: 2020_06_14_004022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2020_06_12_215903) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "congresses", force: :cascade do |t|
+    t.bigint "congressional_member_id", null: false
+    t.bigint "congressional_chamber_id", null: false
+    t.integer "congress_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["congressional_chamber_id"], name: "index_congresses_on_congressional_chamber_id"
+    t.index ["congressional_member_id"], name: "index_congresses_on_congressional_member_id"
   end
 
   create_table "congressional_chambers", force: :cascade do |t|
@@ -153,5 +163,7 @@ ActiveRecord::Schema.define(version: 2020_06_12_215903) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "congresses", "congressional_chambers"
+  add_foreign_key "congresses", "congressional_members"
   add_foreign_key "services", "users"
 end
