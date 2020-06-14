@@ -4,7 +4,7 @@ class CongressionalMembersController < ApplicationController
   # GET /congressional_members
   # GET /congressional_members.json
   def index
-    @congressional_members = CongressionalMember.all
+    @congressional_members = CongressionalMember.first(25)
   end
 
   # GET /congressional_members/1

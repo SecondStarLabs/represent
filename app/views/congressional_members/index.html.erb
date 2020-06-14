@@ -18,7 +18,7 @@
     <thead>
       <tr>
     
-
+            <th>Image</th>
             <th>Title</th>
             <th>Short title</th>
             <th>Bio directory</th>
@@ -74,6 +74,16 @@
         <%= content_tag :tr, id: dom_id(congressional_member), class: dom_class(congressional_member) do %>
           
 
+                      <td class="image-frame">
+                        <%= link_to congressional_member, 
+                            class: "image-frame" do %>
+                          <img class="headshot" 
+                            src='https://theunitedstates.io/images/congress/225x275/<%= congressional_member.bio_directory_id %>.jpg' 
+                            alt="headshot"  
+                            width="250" 
+                            height="275" />
+                        <% end %>  
+                      </td>
                       <td><%= congressional_member.title %></td>
                       <td><%= congressional_member.short_title %></td>
                       <td><%= congressional_member.bio_directory_id %></td>
