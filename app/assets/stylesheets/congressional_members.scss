@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+// credit: https://csshexagon.com/
+// credit: https://codepen.io/ericornelissen/pen/vWbWKv
+// Thanks to <a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS-Tricks</a>, <a href="http://csshexagon.com/">CSS Hexagon, Please</a> and <a href="https://simpleicons.org/">Simple Icons</a>
+
 :root {
   /* Change this to change the appearance of the hexaons */
   --hex-width: 100px;
@@ -80,6 +84,7 @@
 
 .hexagon:hover {
   background-color: var(--color-hex-hover);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 .hexagon:hover::after,
 .hexagon:hover::before {
@@ -122,6 +127,15 @@
 .color-sass:hover {
   fill: var(--color-sass);
 }
+
+//
+.color-sass::after,
+.color-sass::before {
+  border-top-color: var(--color-sass);
+  border-bottom-color: var(--color-sass);
+  opacity: 0.3;
+}
+//
 
 .color-angular {
   background-color: var(--color-angular);
@@ -286,9 +300,12 @@
 .color-atom::before {
   border-top-color: var(--color-atom);
   border-bottom-color: var(--color-atom);
+  opacity: 0.4;
 }
 .color-atom:hover {
   fill: var(--color-atom);
+  opacity: 0.7;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
 .color-meteor {
@@ -305,9 +322,10 @@
 
 .blokedtext {
   position: absolute;
-  bottom: -12px;
+  bottom: -17px;
   z-index: 100;
-  color: #000;
+  color: whitesmoke;
   font-family: arial;
   font-size: 0.8em;
+  left: 24px;
 }
