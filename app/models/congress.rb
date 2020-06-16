@@ -12,11 +12,6 @@ class Congress < ApplicationRecord
 
     self.assemble_chamber(chamber: senate, congress_number: congress_number)
     self.assemble_chamber(chamber: house, congress_number: congress_number)
-    # senate.each do |senator|
-    #   member_data = PropublicaClient.new(congress_number: congress_number).show_member(senator.bio_directory_id)
-
-    #   comgressional_member = CongressionalMember.create_or_update_member(member_data)
-    # end
   end
 
   def self.assemble_chamber(chamber: ,congress_number:)
