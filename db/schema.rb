@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_004022) do
+ActiveRecord::Schema.define(version: 2020_06_17_212603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,30 @@ ActiveRecord::Schema.define(version: 2020_06_14_004022) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "committee_memberships", force: :cascade do |t|
+    t.bigint "term_id", null: false
+    t.bigint "committee_id", null: false
+    t.string "side"
+    t.string "title"
+    t.integer "rank_in_party"
+    t.string "begin_date"
+    t.string "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["committee_id"], name: "index_committee_memberships_on_committee_id"
+    t.index ["term_id"], name: "index_committee_memberships_on_term_id"
+  end
+
+  create_table "committees", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.text "api_uri"
+    t.bigint "congress_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["congress_id"], name: "index_committees_on_congress_id"
   end
 
   create_table "congresses", force: :cascade do |t|
@@ -146,6 +170,72 @@ ActiveRecord::Schema.define(version: 2020_06_14_004022) do
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
+  create_table "subcommittee_memberships", force: :cascade do |t|
+    t.bigint "term_id", null: false
+    t.bigint "subcommittee_id", null: false
+    t.string "side"
+    t.string "title"
+    t.integer "rank_in_party"
+    t.string "begin_date"
+    t.string "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subcommittee_id"], name: "index_subcommittee_memberships_on_subcommittee_id"
+    t.index ["term_id"], name: "index_subcommittee_memberships_on_term_id"
+  end
+
+  create_table "subcommittees", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.text "api_uri"
+    t.bigint "congress_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["congress_id"], name: "index_subcommittees_on_congress_id"
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.bigint "congress_id", null: false
+    t.bigint "congressional_member_id", null: false
+    t.bigint "congressional_chamber_id", null: false
+    t.string "title"
+    t.string "short_title"
+    t.string "state"
+    t.string "party"
+    t.string "leadership_role"
+    t.string "fec_candidate_id"
+    t.string "seniority"
+    t.string "district"
+    t.boolean "at_large"
+    t.string "ocd_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "office"
+    t.string "phone"
+    t.string "fax"
+    t.string "contact_form"
+    t.string "cook_pvi"
+    t.float "dw_nominate"
+    t.string "ideal_point"
+    t.string "next_election"
+    t.integer "total_votes"
+    t.integer "missed_votes"
+    t.integer "total_present"
+    t.string "senate_class"
+    t.string "state_rank"
+    t.string "lis_id"
+    t.integer "bills_sponsored"
+    t.integer "bills_cosponsored"
+    t.float "missed_votes_pct"
+    t.float "votes_with_party_pct"
+    t.float "votes_against_party_pct"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["congress_id"], name: "index_terms_on_congress_id"
+    t.index ["congressional_chamber_id"], name: "index_terms_on_congressional_chamber_id"
+    t.index ["congressional_member_id"], name: "index_terms_on_congressional_member_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -163,7 +253,16 @@ ActiveRecord::Schema.define(version: 2020_06_14_004022) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "committee_memberships", "committees"
+  add_foreign_key "committee_memberships", "terms"
+  add_foreign_key "committees", "congresses"
   add_foreign_key "congresses", "congressional_chambers"
   add_foreign_key "congresses", "congressional_members"
   add_foreign_key "services", "users"
+  add_foreign_key "subcommittee_memberships", "subcommittees"
+  add_foreign_key "subcommittee_memberships", "terms"
+  add_foreign_key "subcommittees", "congresses"
+  add_foreign_key "terms", "congresses"
+  add_foreign_key "terms", "congressional_chambers"
+  add_foreign_key "terms", "congressional_members"
 end

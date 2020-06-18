@@ -1,4 +1,5 @@
-class MemberRepresenter < Representable::Decorator
+require "representable/json/collection"
+class Doppelganger::MemberRepresenter < Representable::Decorator
     include Representable::JSON
 
     property :id
@@ -68,5 +69,7 @@ class MemberRepresenter < Representable::Decorator
     property :bills_cosponsored  
     property :missed_votes_pct  
     property :votes_with_party_pct  
-    property :votes_against_party_pct  
+    property :votes_against_party_pct
+
+    # collection :roles, decorator: RoleRepresenter, class: Role
 end

@@ -1,5 +1,6 @@
 class CongressionalMember < ApplicationRecord
-    has_many :congresses
+    has_many :terms
+    has_many :congresses, through: :terms
 
     def self.create_or_update_member(member_data) #in an OpenStruct
         @congressional_member = CongressionalMember.find_or_create_by(bio_directory_id: member_data.bio_directory_id)

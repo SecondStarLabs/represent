@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  term: one
+  subcommittee: one
+  side: MyString
+  title: MyString
+  rank_in_party: 1
+  begin_date: MyString
+  end_date: MyString
+
+two:
+  term: two
+  subcommittee: two
+  side: MyString
+  title: MyString
+  rank_in_party: 1
+  begin_date: MyString
+  end_date: MyString
