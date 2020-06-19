@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/all'    
 class MemberManager
     attr_reader :member, :term, :member_info, :committee_membership
 
@@ -35,9 +37,12 @@ class MemberManager
 
             committees = role.fetch("committees")
             role_committees = create_committee_memberships(committees)
-            puts "role_committees #{role_committees}"
+            # puts "role_committees #{role_committees}"
             term.committee_memberships = role_committees
             
+            subcommittees = role.fetch("subcommittees")
+            role_subcommittees = create_subcommittee_memberships(subcommittees)
+            term.subcommittee_memberships = role_subcommittees
             
             terms << term
         end
@@ -48,24 +53,26 @@ class MemberManager
         committee_memberships = []
         committees.each do |committee|
             cm = CmCommitteeMembership.new
-            puts "!!! committee!! #{committee} "
             Doppelganger::RoleCommitteeRepresenter.new(cm).from_json(committee.to_json)                
+            cm.begin_date  = cm.begin_date.to_date
+            cm.end_date    = cm.end_date.to_date
             committee_memberships << cm
         end
         committee_memberships
     end
 
     ## To do!
-    # def create_subcommittee_memberships(subcommittees)
-    #     subcommittee_memberships = []
-    #     subcommittees.each do |subcommittee|
-    #         scm = CmSubCommitteeMembership.new
-    #         puts "!!! subcommittee!! #{subcommittee} "
-    #         Doppelganger::RoleSubCommitteeRepresenter.new(scm).from_json(subcommittee.to_json)                
-    #         subcommittee_memberships << scm
-    #     end
-    #     subcommittee_memberships
-    # end
+    def create_subcommittee_memberships(subcommittees)
+        subcommittee_memberships = []
+        subcommittees.each do |subcommittee|
+            scm = CmSubcommitteeMembership.new
+            Doppelganger::RoleSubcommitteeRepresenter.new(scm).from_json(subcommittee.to_json)
+            scm.begin_date  = scm.begin_date.to_date
+            scm.end_date    = scm.end_date.to_date
+            subcommittee_memberships << scm
+        end
+        subcommittee_memberships
+    end
 
 
 end

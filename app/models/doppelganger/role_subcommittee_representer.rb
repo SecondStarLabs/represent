@@ -1,8 +1,9 @@
-class Doppelganger::RoleCommitteeRepresenter < Representable::Decorator
+class Doppelganger::RoleSubcommitteeRepresenter < Representable::Decorator
     include Representable::JSON
 
     property :name
     property :code
+    property :parent_committee_id
     property :api_uri
     property :side
     property :title
