@@ -38,10 +38,10 @@ class MemberManager
             term.congress   = term.congress.to_i
             term.start_date = term.start_date.to_date
             term.end_date   = term.end_date.to_date
-            # committees = role.fetch("committees")
-            # role_committees = create_committee_memberships(committees)
-            # # puts "role_committees #{role_committees}"
-            # term.committee_memberships = role_committees
+            committees = role.fetch("committees")
+            role_committees = create_committee_memberships(committees)
+            puts "role_committees #{role_committees}"
+            term.committee_memberships = role_committees
             
             # subcommittees = role.fetch("subcommittees")
             # role_subcommittees = create_subcommittee_memberships(subcommittees)

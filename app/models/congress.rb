@@ -95,12 +95,28 @@ class Congress < ApplicationRecord
         votes_against_party_pct: cm_term.votes_against_party_pct
       )
       
+      # create of committee_memberships
+      cm_term.committee_memberships.each do |cm_committee_membership|
+        self.attach_committee_memberships_to_term(term: term, cm_committee_membership: cm_committee_membership)
+      end
     end
   end
 
-  # def self.populate_committees(chamber_members:, congress_number:)
-    
-  # end
+
+  def self.attach_committee_memberships_to_term(term: ,cm_committee_membership: )
+    congress              = term.congress
+    committee             = Committee.create_or_find_by!(code: cm_committee_membership.code, congress: congress)
+    committee.update(name: cm_committee_membership.name, api_uri: cm_committee_membership.api_uri )
+
+    committee_membership  = committee.committee_memberships.create_or_find_by!(term: term, committee: committee)
+    committee_membership.update(committee: committee, 
+      side: cm_committee_membership.side, 
+      title: cm_committee_membership.title, 
+      rank_in_party: cm_committee_membership.rank_in_party, 
+      begin_date: cm_committee_membership.begin_date, 
+      end_date: cm_committee_membership.end_date)
+
+  end
 
   # def self.populate_subcommittees(chamber_members:, congress_number:)
     
