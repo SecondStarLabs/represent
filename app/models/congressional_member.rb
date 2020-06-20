@@ -30,6 +30,7 @@ class CongressionalMember < ApplicationRecord
             in_office:          member_data.in_office,
             cook_pvi:           member_data.cook_pvi
         )
+        @congressional_member
     end
 
 end

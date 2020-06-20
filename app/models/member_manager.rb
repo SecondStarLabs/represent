@@ -4,7 +4,6 @@ class MemberManager
     attr_reader :member, :term, :member_info, :committee_membership
 
     def initialize(member: Member.new, 
-        term: CmTerm.new,
         committee_membership: CmCommitteeMembership.new, 
         member_info: )
 
@@ -30,19 +29,23 @@ class MemberManager
         member
     end
 
-    def create_terms(roles_in_json)
+    def create_terms(roles)
         terms = []
-        roles_in_json.each do |role|
-            Doppelganger::MemberRepresenter.new(term).from_json(role.to_json)  
+        roles.each do |role|
+            term = CmTerm.new
+            Doppelganger::RoleRepresenter.new(term).from_json(role.to_json)  
 
-            committees = role.fetch("committees")
-            role_committees = create_committee_memberships(committees)
-            # puts "role_committees #{role_committees}"
-            term.committee_memberships = role_committees
+            term.congress   = term.congress.to_i
+            term.start_date = term.start_date.to_date
+            term.end_date   = term.end_date.to_date
+            # committees = role.fetch("committees")
+            # role_committees = create_committee_memberships(committees)
+            # # puts "role_committees #{role_committees}"
+            # term.committee_memberships = role_committees
             
-            subcommittees = role.fetch("subcommittees")
-            role_subcommittees = create_subcommittee_memberships(subcommittees)
-            term.subcommittee_memberships = role_subcommittees
+            # subcommittees = role.fetch("subcommittees")
+            # role_subcommittees = create_subcommittee_memberships(subcommittees)
+            # term.subcommittee_memberships = role_subcommittees
             
             terms << term
         end
