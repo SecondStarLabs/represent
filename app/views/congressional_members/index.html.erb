@@ -1,5 +1,12 @@
+<%# start hive grid %>
 
+<header><h1>Hive looking responsive grid</h1>
+	<p>Change <span>$block-size</span> value in the CSS and <span>resize the window</span> to see it in action</p>
+</header>
+	<div class="grid">
+  <%= render partial: "member_hexagon", collection: @congressional_members, as: :member %>
 
+	</div>
 
 <div class="row">
   <div class="col-sm-6">
@@ -13,117 +20,3 @@
   </div>
 </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-    
-
-            <th>Title</th>
-            <th>Short title</th>
-            <th>Bio directory</th>
-            <th>First name</th>
-            <th>Middle name</th>
-            <th>Last name</th>
-            <th>Suffix</th>
-            <th>Date of birth</th>
-            <th>Gender</th>
-            <th>Party</th>
-            <th>Leadership role</th>
-            <th>Twitter account</th>
-            <th>Facebook account</th>
-            <th>Youtube account</th>
-            <th>Govtrack</th>
-            <th>Cspan</th>
-            <th>Votesmart</th>
-            <th>Icpsr</th>
-            <th>Crp</th>
-            <th>Google entity</th>
-            <th>Fec candidate</th>
-            <th>Url</th>
-            <th>Rss url</th>
-            <th>Contact form</th>
-            <th>In office</th>
-            <th>Cook pvi</th>
-            <th>Dw nominate</th>
-            <th>Ideal point</th>
-            <th>Seniority</th>
-            <th>Next election</th>
-            <th>Total votes</th>
-            <th>Missed votes</th>
-            <th>Total present</th>
-            <th>Ocd</th>
-            <th>Office</th>
-            <th>Phone</th>
-            <th>Fax</th>
-            <th>State</th>
-            <th>Senate class</th>
-            <th>State rank</th>
-            <th>Lis</th>
-            <th>Missed votes pct</th>
-            <th>Votes with party pct</th>
-            <th>Votes against party pct</th>
-            
-          <th></th>
-        
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @congressional_members.each do |congressional_member| %>
-        <%= content_tag :tr, id: dom_id(congressional_member), class: dom_class(congressional_member) do %>
-          
-
-                      <td><%= congressional_member.title %></td>
-                      <td><%= congressional_member.short_title %></td>
-                      <td><%= congressional_member.bio_directory_id %></td>
-                      <td><%= congressional_member.first_name %></td>
-                      <td><%= congressional_member.middle_name %></td>
-                      <td><%= congressional_member.last_name %></td>
-                      <td><%= congressional_member.suffix %></td>
-                      <td><%= congressional_member.date_of_birth %></td>
-                      <td><%= congressional_member.gender %></td>
-                      <td><%= congressional_member.party %></td>
-                      <td><%= congressional_member.leadership_role %></td>
-                      <td><%= congressional_member.twitter_account %></td>
-                      <td><%= congressional_member.facebook_account %></td>
-                      <td><%= congressional_member.youtube_account %></td>
-                      <td><%= congressional_member.govtrack_id %></td>
-                      <td><%= congressional_member.cspan_id %></td>
-                      <td><%= congressional_member.votesmart_id %></td>
-                      <td><%= congressional_member.icpsr_id %></td>
-                      <td><%= congressional_member.crp_id %></td>
-                      <td><%= congressional_member.google_entity_id %></td>
-                      <td><%= congressional_member.fec_candidate_id %></td>
-                      <td><%= congressional_member.url %></td>
-                      <td><%= congressional_member.rss_url %></td>
-                      <td><%= congressional_member.contact_form %></td>
-                      <td><%= congressional_member.in_office %></td>
-                      <td><%= congressional_member.cook_pvi %></td>
-                      <td><%= congressional_member.dw_nominate %></td>
-                      <td><%= congressional_member.ideal_point %></td>
-                      <td><%= congressional_member.seniority %></td>
-                      <td><%= congressional_member.next_election %></td>
-                      <td><%= congressional_member.total_votes %></td>
-                      <td><%= congressional_member.missed_votes %></td>
-                      <td><%= congressional_member.total_present %></td>
-                      <td><%= congressional_member.ocd_id %></td>
-                      <td><%= congressional_member.office %></td>
-                      <td><%= congressional_member.phone %></td>
-                      <td><%= congressional_member.fax %></td>
-                      <td><%= congressional_member.state %></td>
-                      <td><%= congressional_member.senate_class %></td>
-                      <td><%= congressional_member.state_rank %></td>
-                      <td><%= congressional_member.lis_id %></td>
-                      <td><%= congressional_member.missed_votes_pct %></td>
-                      <td><%= congressional_member.votes_with_party_pct %></td>
-                      <td><%= congressional_member.votes_against_party_pct %></td>
-          
-          
-            <td><%= link_to 'Show', congressional_member %></td>
-          
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>

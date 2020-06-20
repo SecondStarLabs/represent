@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  congressional_member: one
+  congressional_chamber: one
+  congress_number: 1
+
+two:
+  congressional_member: two
+  congressional_chamber: two
+  congress_number: 1
