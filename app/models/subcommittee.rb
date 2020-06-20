@@ -1,3 +1,4 @@
 class Subcommittee < ApplicationRecord
-  belongs_to :congress
+  has_many    :subcommittee_memberships
+  belongs_to  :congress
 end

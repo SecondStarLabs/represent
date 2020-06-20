@@ -99,27 +99,44 @@ class Congress < ApplicationRecord
       cm_term.committee_memberships.each do |cm_committee_membership|
         self.attach_committee_memberships_to_term(term: term, cm_committee_membership: cm_committee_membership)
       end
+      # create of subcommittee_memberships
+      cm_term.subcommittee_memberships.each do |cm_subcommittee_membership|
+        self.attach_subcommittee_memberships_to_term(term: term, cm_subcommittee_membership: cm_subcommittee_membership)
+      end
     end
   end
 
 
-  def self.attach_committee_memberships_to_term(term: ,cm_committee_membership: )
+  def self.attach_committee_memberships_to_term(term: ,
+    cm_committee_membership: )
     congress              = term.congress
     committee             = Committee.create_or_find_by!(code: cm_committee_membership.code, congress: congress)
     committee.update(name: cm_committee_membership.name, api_uri: cm_committee_membership.api_uri )
 
     committee_membership  = committee.committee_memberships.create_or_find_by!(term: term, committee: committee)
     committee_membership.update(committee: committee, 
-      side: cm_committee_membership.side, 
-      title: cm_committee_membership.title, 
-      rank_in_party: cm_committee_membership.rank_in_party, 
-      begin_date: cm_committee_membership.begin_date, 
-      end_date: cm_committee_membership.end_date)
+      side:           cm_committee_membership.side, 
+      title:          cm_committee_membership.title, 
+      rank_in_party:  cm_committee_membership.rank_in_party, 
+      begin_date:     cm_committee_membership.begin_date, 
+      end_date:       cm_committee_membership.end_date)
 
   end
 
-  # def self.populate_subcommittees(chamber_members:, congress_number:)
-    
-  # end
+  def self.attach_subcommittee_memberships_to_term(term: ,
+    cm_subcommittee_membership: )
+    congress                  = term.congress
+    subcommittee              = Subcommittee.create_or_find_by!(code: cm_subcommittee_membership.code, congress: congress)
+    subcommittee.update(name: cm_subcommittee_membership.name, api_uri: cm_subcommittee_membership.api_uri )
+
+    subcommittee_membership   = subcommittee.subcommittee_memberships.create_or_find_by!(term: term, subcommittee: subcommittee)
+
+    subcommittee_membership.update(subcommittee: subcommittee, 
+      side:           cm_subcommittee_membership.side, 
+      title:          cm_subcommittee_membership.title, 
+      rank_in_party:  cm_subcommittee_membership.rank_in_party, 
+      begin_date:     cm_subcommittee_membership.begin_date, 
+      end_date:       cm_subcommittee_membership.end_date)
+  end
 
 end
