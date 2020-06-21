@@ -1,7 +1,10 @@
 class Congress < ApplicationRecord
+  has_many :committees
+  has_many :subcommittees
   has_many :congressional_terms
   has_many :terms
   has_many :congressional_members, through: :terms
+  
   
   
   def self.say_hello
@@ -13,7 +16,7 @@ class Congress < ApplicationRecord
     ## congress. Populate the Senate and the House with their members.  
     ## Instantiate the committees and subcommittes.
 
-    congress    = Congress.find_or_create_by(id: congress_number)
+    congress    = self.set_congressional_term(congress_number)
     senators    = PropublicaClient.new(congress_number: congress_number).list_senate_members
     house_reps  = PropublicaClient.new(congress_number: congress_number).list_house_members
     
@@ -29,7 +32,7 @@ class Congress < ApplicationRecord
   end
 
   def self.assemble_chamber(chamber_members: ,congress_number:)
-    congress  = Congress.find_or_create_by!(id: congress_number)
+    congress  = self.set_congressional_term(congress_number)
 
     if chamber_members.first.chamber == "senate"
       chamber_name = "Senate"
@@ -54,7 +57,7 @@ class Congress < ApplicationRecord
       # selected, not all of the terms of the 
       # congressional member
       cm_term = member_data.terms.find {|i| i.congress }
-      cm_term_congress = Congress.find(cm_term.congress)
+      cm_term_congress = self.set_congressional_term(cm_term.congress)
       puts cm_term
       puts "### /// Term: congress - #{congress.id}, chamber - #{chamber.name}"
 
@@ -143,5 +146,9 @@ class Congress < ApplicationRecord
                                   membership.end_date       = cm_subcommittee_membership.end_date
                                 end
   end
-
+  
+  def self.set_congressional_term(congress_number)
+    puts "congress #{congress_number}"
+    self.where(id: congress_number, congress_number: congress_number).first_or_create
+  end
 end
